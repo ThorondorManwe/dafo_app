@@ -1,208 +1,93 @@
 import Image from "next/image";
 import logo from "@/assets/images/logo-white.png";
 import profileDefault from "@/assets/images/profile.png";
+import Link from "next/link";
 
 
 const Navbar = () => {
   return (
-    <nav className="bg-blue-700 border-b border-blue-500">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-20 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
-            {/*  Mobile menu button */}
-            <button
-              type="button"
-              id="mobile-dropdown-button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-            >
-              <span className="absolute -inset-0.5"></span>
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="block h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            </button>
-          </div>
+    <header id="cs-navigation">
 
-          <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-            {/* <!-- Logo --> */}
-            <a className="flex flex-shrink-0 items-center" href="/index.html">
-              <Image
-                className="h-10 w-auto"
-                src={ logo }
-                alt="PropertyPulse"
-              />
-
-              <span className="hidden md:block text-white text-2xl font-bold ml-2">
-                PropertyPulse
-              </span>
-            </a>
-            {/* <!-- Desktop Menu Hidden below md screens --> */}
-            <div className="hidden md:ml-6 md:block">
-              <div className="flex space-x-2">
-                <a
-                  href="/index.html"
-                  className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                >
-                  Home
-                </a>
-                <a
-                  href="/properties.html"
-                  className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                >
-                  Properties
-                </a>
-                <a
-                  href="/add-property.html"
-                  className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                >
-                  Add Property
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/*  <!-- Right Side Menu (Logged Out) --> */}
-          <div className="hidden md:block md:ml-6">
-            <div className="flex items-center">
-              <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">
-                <i className="fa-brands fa-google text-white mr-2"></i>
-                <span>Login or Register</span>
+      <div className="cs-container">
+          {/* <!--Nav Logo--> */}
+          {/* <!--Logo is turned white in the css with a filter on dark mode--> */}
+          <a href="" className="cs-logo" aria-label="back to home">
+              <Image src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/day-care.svg" alt="logo" width="210" height="29" aria-hidden="true" decoding="async" />
+          </a>
+          {/* <!--Navigation List--> */}
+          <nav className="cs-nav" role="navigation">
+              {/* <!--Mobile Nav Toggle--> */}
+              <button className="cs-toggle" aria-label="mobile menu toggle">
+                  <div className="cs-box" aria-hidden="true">
+                      <span className="cs-line cs-line1" aria-hidden="true"></span>
+                      <span className="cs-line cs-line2" aria-hidden="true"></span>
+                      <span className="cs-line cs-line3" aria-hidden="true"></span>
+                  </div>
               </button>
-            </div>
-          </div>
-
-          {/* <!-- Right Side Menu (Logged In) --> */}
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
-            <a href="messages.html" className="relative group">
-              <button
-                type="button"
-                className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              >
-                <span className="absolute -inset-1.5"></span>
-                <span className="sr-only">View notifications</span>
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                  />
-                </svg>
-              </button>
-              <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
-                2
-                {/* <!-- Replace with the actual number of notifications --> */}
-              </span>
-            </a>
-            {/* <!-- Profile dropdown button --> */}
-            <div className="relative ml-3">
-              <div>
-                <button
-                  type="button"
-                  className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  id="user-menu-button"
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                >
-                  <span className="absolute -inset-1.5"></span>
-                  <span className="sr-only">Open user menu</span>
-                  <Image
-                    className="h-8 w-8 rounded-full"
-                    src={ profileDefault }
-                    alt=""
-                  />
-                </button>
+              {/* <!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. This wrapper acts as the background so it can go the full height of the screen and not cut off any overflowing nav items while the cs-ul stops short of the bottom of the screen, which keeps all nav items in view no matter how mnay there are--> */}
+              <div className="cs-ul-wrapper">
+                  <ul id="cs-expanded" className="cs-ul" aria-expanded="false">
+                      <li className="cs-li">
+                          <Link href="/" className="cs-li-link cs-active">Inicio</Link>
+                      </li>
+                      <li className="cs-li">
+                          <Link href="/acerca-de" className="cs-li-link">Acerca de</Link>
+                      </li>
+                      {/* <!--Copy and paste this cs-dropdown list item and replace any .cs-li with this cs-dropdown group to make a new dropdown and it will work--> */}
+                      <li className="cs-li cs-dropdown" tabindex="0">
+                          <span className="cs-li-link">
+                              Services
+                              <Image className="cs-drop-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/down-gold.svg" alt="dropdown icon" width="15" height="15" decoding="async" aria-hidden="true" />
+                          </span>
+                          <ul className="cs-drop-ul">
+                              <li className="cs-drop-li">
+                                  <a href="" className="cs-li-link cs-drop-link">Registration</a>
+                              </li>
+                              <li className="cs-drop-li">
+                                  <a href="" className="cs-li-link cs-drop-link">Our ClassNamees</a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li className="cs-li">
+                          <a href="" className="cs-li-link">
+                              Blog
+                          </a>
+                      </li>
+                      <li className="cs-li">
+                          <a href="" className="cs-li-link">
+                              Contact
+                          </a>
+                      </li>
+                  </ul>
               </div>
-
-              {/* <!-- Profile dropdown --> */}
-              <div
-                id="user-menu"
-                className="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="user-menu-button"
-                tabIndex="-1"
-              >
-                <a
-                  href="/profile.html"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="user-menu-item-0"
-                >
-                  Your Profile
-                </a>
-                <a
-                  href="saved-properties.html"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="user-menu-item-2"
-                >
-                  Saved Properties
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="user-menu-item-2"
-                >
-                  Sign Out
-                </a>
+          </nav>
+          <div className="cs-contact-group">
+              <a href="tel:+84 1985 33 999" className="cs-phone">
+                  <Image className="cs-phone-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/phone-1a.svg" alt="logo" width="24" height="24" aria-hidden="true" decoding="async" />
+                  +84 1985 33 999
+              </a>
+              <div className="cs-social">
+                  <a href="" className="cs-social-link">
+                      <Image className="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/facebook-1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async" />
+                  </a>
+                  <a href="" className="cs-social-link">
+                      <Image className="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/twitter-1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async" />
+                  </a>
+                  <a href="" className="cs-social-link">
+                      <Image className="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/instagram1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async" />
+                  </a>
+                  <a href="" className="cs-social-link">
+                      <Image className="cs-social-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/youtube1a.svg" alt="logo" width="12" height="12" aria-hidden="true" decoding="async" />
+                  </a>
               </div>
-            </div>
           </div>
-        </div>
+          {/* <!--Dark Mode toggle, uncomment button code if you want to enable a dark mode toggle--> */}
+          {/* <!-- <button id="dark-mode-toggle" aria-label="dark mode toggle">
+              <svg className="cs-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480" xml:space="preserve"><path d="M459.782 347.328c-4.288-5.28-11.488-7.232-17.824-4.96-17.76 6.368-37.024 9.632-57.312 9.632-97.056 0-176-78.976-176-176 0-58.4 28.832-112.768 77.12-145.472 5.472-3.712 8.096-10.4 6.624-16.832S285.638 2.4 279.078 1.44C271.59.352 264.134 0 256.646 0c-132.352 0-240 107.648-240 240s107.648 240 240 240c84 0 160.416-42.688 204.352-114.176 3.552-5.792 3.04-13.184-1.216-18.496z"/></svg>
+              <Image className="cs-sun" aria-hidden="true" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fsun.svg" decoding="async" alt="moon" width="15" height="15">
+          </button> --> */}
       </div>
-
-      {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-      <div className="hidden" id="mobile-menu">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          <a
-            href="/index.html"
-            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-          >
-            Home
-          </a>
-          <a
-            href="/properties.html"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-          >
-            Properties
-          </a>
-          <a
-            href="/add-property.html"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-          >
-            Add Property
-          </a>
-          <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4">
-            <i className="fa-brands fa-google mr-2"></i>
-            <span>Login or Register</span>
-          </button>
-        </div>
-      </div>
-    </nav>
+    </header>
   );
 };
 
