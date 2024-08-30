@@ -722,3 +722,93 @@ body {
     display: flex;
   }
 }
+
+/* Estilos del botón de Login */
+.login_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  /* 46px - 56px */
+  line-height: clamp(2.875em, 5.5vw, 3.5em);
+  text-align: center;
+  text-decoration: none;
+  min-width: 9.375rem;
+  margin: 0;
+  /* prevents padding from adding to the width */
+  box-sizing: border-box;
+  padding: 0 0.8rem;
+  color: #fff;
+  background-color: var(--primary);
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login_button:hover {
+  color: var(--primary);
+  background-color: #fff;
+  border: 3px solid var(--primary);
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+#mobile-menu {
+  display: block;
+  background-color: red;
+  z-index: 3;
+}
+
+.red {
+  background-color: red;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+/* Modal */
+
+dialog {
+  position: fixed;
+  top: 40px;
+  background: var(--primary);
+  width: 75vw;
+  margin: auto;
+  display: block;
+  animation: expand 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  border-radius: 8px;
+  padding: 32px;
+  z-index: 1000;
+}
+
+dialog button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0;
+  color: var(--secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
